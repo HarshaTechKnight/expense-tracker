@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>Expenses</title>
+</head>
+<body>
+    <section>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Expenses</h1>
+            <a th:href="@{/expenses/add}" class="btn btn-primary">Add Expense</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="expense : ${expenses}">
+                            <td th:text="${expense.description}"></td>
+                            <td th:text="${#numbers.formatDecimal(expense.amount, 1, 2)}"></td>
+                            <td th:text="${#temporals.format(expense.date, 'yyyy-MM-dd')}"></td>
+                            <td th:text="${expense.category?.name} ?: 'N/A'"></td>
+                            <td>
+                                <a th:href="@{/expenses/edit/{id}(id=${expense.id})}" class="btn btn-sm btn-warning">Edit</a>
+                                <a th:href="@{/expenses/delete/{id}(id=${expense.id})}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
