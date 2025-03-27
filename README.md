@@ -139,5 +139,5 @@ MIT License - See LICENSE file for details
 ## CONTACT
 -------
 For support or questions:
-- Email: your.email@example.com
-- GitHub: github.com/yourusername
+- Email: sriharsha0413@gmail.com
+- GitHub: github.com/HarshaTechKnight
